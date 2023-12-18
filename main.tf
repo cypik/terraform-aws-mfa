@@ -6,9 +6,7 @@ module "labels" {
   repository  = var.repository
   managedby   = var.managedby
   label_order = var.label_order
-
 }
-
 
 resource "aws_iam_policy" "enable_mfa" {
   name        = var.name
