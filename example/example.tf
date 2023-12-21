@@ -3,7 +3,7 @@ provider "aws" {
 }
 module "mfa" {
   source      = "../"
-  name        = "mfa"
+  name        = "mfa1"
   environment = "test"
   users       = []
   groups      = []

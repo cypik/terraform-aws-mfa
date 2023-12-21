@@ -17,7 +17,7 @@ variable "attributes" {
 
 variable "repository" {
   type        = string
-  default     = ""
+  default     = "https://github.com/cypik/terraform-aws-mfa"
   description = "Terraform current module repo"
 }
 
@@ -29,13 +29,13 @@ variable "environment" {
 
 variable "label_order" {
   type        = list(any)
-  default     = []
-  description = "label order, e.g. `name`,`application`."
+  default     = ["name", "environment"]
+  description = "Label order, e.g. `name`,`application`."
 }
 
 variable "managedby" {
   type        = string
-  default     = ""
+  default     = "cypik"
   description = "ManagedBy, eg 'cypik'."
 }
 

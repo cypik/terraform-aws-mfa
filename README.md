@@ -37,7 +37,7 @@ module "mfa" {
 - Other relevant security group outputs (modify as needed).
 
 ## Example
-For detailed examples on how to use this module, please refer to the 'examples' directory within this repository.
+For detailed examples on how to use this module, please refer to the [examples](https://github.com/cypik/terraform-aws-mfa/tree/master/example) directory within this repository.
 
 ## Author
 Your Name Replace '[License Name]' and '[Your Name]' with the appropriate license and your information. Feel free to expand this README with additional details or usage instructions as needed for your specific use case.
