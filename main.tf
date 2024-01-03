@@ -24,76 +24,149 @@ resource "aws_iam_policy" "enable_mfa" {
 data "aws_iam_policy_document" "enable_mfa" {
 
   statement {
-    sid    = "VisualEditor0"
+    sid    = "AllowViewAccountInfo"
     effect = "Allow"
     actions = [
-      "iam:GetPolicyVersion",
       "iam:GetAccountPasswordPolicy",
-      "iam:ListRoleTags",
-      "iam:ListServerCertificates",
-      "iam:GenerateServiceLastAccessedDetails",
-      "iam:ListServiceSpecificCredentials",
-      "iam:ListSigningCertificates",
-      "iam:ListVirtualMFADevices",
-      "iam:ListSSHPublicKeys",
-      "iam:SimulateCustomPolicy",
-      "iam:SimulatePrincipalPolicy",
-      "iam:ListAttachedRolePolicies",
-      "iam:ListOpenIDConnectProviderTags",
-      "iam:ListSAMLProviderTags",
-      "iam:ListRolePolicies",
-      "iam:GetAccountAuthorizationDetails",
-      "iam:GetCredentialReport",
-      "iam:ListPolicies",
-      "iam:GetServerCertificate",
-      "iam:GetRole",
-      "iam:ListSAMLProviders",
-      "iam:GetPolicy",
-      "iam:GetAccessKeyLastUsed",
-      "iam:ListEntitiesForPolicy",
-      "iam:GetUserPolicy",
-      "iam:ListGroupsForUser",
-      "iam:GetGroupPolicy",
-      "iam:GetOpenIDConnectProvider",
-      "iam:GetRolePolicy",
       "iam:GetAccountSummary",
-      "iam:GenerateCredentialReport",
-      "iam:GetServiceLastAccessedDetailsWithEntities",
-      "iam:ListPoliciesGrantingServiceAccess",
-      "iam:ListInstanceProfileTags",
-      "iam:ListMFADevices",
-      "iam:GetServiceLastAccessedDetails",
-      "iam:GetGroup",
-      "iam:GetContextKeysForPrincipalPolicy",
-      "iam:GetOrganizationsAccessReport",
-      "iam:GetServiceLinkedRoleDeletionStatus",
-      "iam:ListInstanceProfilesForRole",
-      "iam:GenerateOrganizationsAccessReport",
-      "iam:EnableMFADevice",
-      "iam:ListAttachedUserPolicies",
-      "iam:ListAttachedGroupPolicies",
-      "iam:ListPolicyTags",
-      "iam:GetSAMLProvider",
-      "iam:ListAccessKeys",
-      "iam:GetInstanceProfile",
-      "iam:ListGroupPolicies",
-      "iam:GetSSHPublicKey",
-      "iam:ListRoles",
-      "iam:ListUserPolicies",
-      "iam:ListInstanceProfiles",
-      "iam:GetContextKeysForCustomPolicy",
-      "iam:ListPolicyVersions",
-      "iam:ListOpenIDConnectProviders",
-      "iam:ListServerCertificateTags",
-      "iam:ListAccountAliases",
-      "iam:ListUsers",
-      "iam:GetUser",
-      "iam:ListGroups",
-      "iam:ListMFADeviceTags",
-      "iam:GetLoginProfile",
-      "iam:ListUserTags"
+      "iam:ListVirtualMFADevices",
+      "iam:ListMFADevices"
     ]
     resources = ["*"]
+  }
+
+  statement {
+    sid    = "AllowManageOwnPasswords"
+    effect = "Allow"
+    actions = [
+      "iam:ChangePassword",
+      "iam:GetUser",
+      "iam:CreateLoginProfile",
+      "iam:DeleteLoginProfile",
+      "iam:GetLoginProfile",
+      "iam:UpdateLoginProfile"
+    ]
+    resources = [
+      "arn:aws:iam::*:user/&{aws:username}",
+    ]
+  }
+
+  statement {
+    sid    = "AllowManageOwnAccessKeys"
+    effect = "Allow"
+    actions = [
+      "iam:CreateAccessKey",
+      "iam:DeleteAccessKey",
+      "iam:ListAccessKeys",
+      "iam:UpdateAccessKey"
+
+    ]
+    resources = [
+      "arn:aws:iam::*:user/&{aws:username}",
+    ]
+
+  }
+
+  statement {
+    sid    = "AllowManageOwnSigningCertificates"
+    effect = "Allow"
+    actions = [
+      "iam:DeleteSigningCertificate",
+      "iam:ListSigningCertificates",
+      "iam:UpdateSigningCertificate",
+      "iam:UploadSigningCertificate",
+    ]
+    resources = [
+      "arn:aws:iam::*:user/&{aws:username}",
+    ]
+  }
+
+  statement {
+    sid    = "AllowManageOwnSSHPublicKeys"
+    effect = "Allow"
+    actions = [
+      "iam:DeleteSSHPublicKey",
+      "iam:GetSSHPublicKey",
+      "iam:ListSSHPublicKeys",
+      "iam:UpdateSSHPublicKey",
+      "iam:UploadSSHPublicKey"
+
+    ]
+    resources = [
+      "arn:aws:iam::*:user/&{aws:username}",
+    ]
+  }
+
+  statement {
+    sid    = "AllowManageOwnGitCredentials"
+    effect = "Allow"
+    actions = [
+      "iam:CreateServiceSpecificCredential",
+      "iam:DeleteServiceSpecificCredential",
+      "iam:ListServiceSpecificCredentials",
+      "iam:ResetServiceSpecificCredential",
+      "iam:UpdateServiceSpecificCredential"
+    ]
+    resources = [
+      "arn:aws:iam::*:user/&{aws:username}",
+    ]
+  }
+
+  statement {
+    sid    = "AllowManageOwnVirtualMFADevice"
+    effect = "Allow"
+    actions = [
+      "iam:CreateVirtualMFADevice",
+      "iam:DeleteVirtualMFADevice"
+
+    ]
+    resources = [
+      "arn:aws:iam::*:user/&{aws:username}",
+    ]
+
+  }
+
+  statement {
+    sid    = "AllowManageOwnUserMFA"
+    effect = "Allow"
+    actions = [
+      "iam:DeactivateMFADevice",
+      "iam:EnableMFADevice",
+      "iam:ListMFADevices",
+      "iam:ResyncMFADevice"
+
+    ]
+    resources = [
+      "arn:aws:iam::*:user/&{aws:username}",
+    ]
+  }
+
+  statement {
+    sid    = "DenyAllExceptListedIfNoMFA"
+    effect = "Deny"
+    not_actions = [
+      "iam:CreateVirtualMFADevice",
+      "iam:EnableMFADevice",
+      "iam:GetUser",
+      "iam:ListUsers",
+      "iam:GetMFADevice",
+      "iam:ListMFADevices",
+      "iam:ListVirtualMFADevices",
+      "iam:ResyncMFADevice",
+      "sts:GetSessionToken"
+    ]
+
+    resources = ["*"]
+    condition {
+      test     = "Bool"
+      variable = "aws:MultiFactorAuthPresent"
+      values   = ["false"]
+    }
+    condition {
+      test     = "Bool"
+      variable = "aws:ViaAWSService"
+      values   = ["false"]
+    }
   }
 }
 
