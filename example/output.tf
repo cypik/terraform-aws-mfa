@@ -1,7 +1,6 @@
 output "iam-arn" {
   value       = module.mfa.iam-arn
   description = "The ARN assigned by AWS to this policy."
-
 }
 
 output "tags" {

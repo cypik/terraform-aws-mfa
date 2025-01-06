@@ -1,6 +1,7 @@
 provider "aws" {
-  region = "eu-west-1"
+  region = "us-east-2"
 }
+
 module "mfa" {
   source      = "./../"
   name        = "mfa"
