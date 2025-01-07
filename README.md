@@ -13,6 +13,7 @@
 
 ## Introduction
 This Terraform module creates an AWS Multi-Factor Authentication (MFA) along with additional configuration options.
+
 ## Usage
 To use this module, you can include it in your Terraform configuration. Here's an example of how to use it:
 
