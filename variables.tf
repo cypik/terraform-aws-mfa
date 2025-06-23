@@ -1,4 +1,3 @@
-
 variable "name" {
   type        = string
   description = "Name  (e.g. `test` or `mfa`)."
@@ -35,8 +34,8 @@ variable "label_order" {
 
 variable "managedby" {
   type        = string
-  default     = "cypik"
-  description = "ManagedBy, eg 'cypik'."
+  default     = "info@cypik.com"
+  description = "ManagedBy, eg 'info@cypik.com'."
 }
 
 variable "groups" {

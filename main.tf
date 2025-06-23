@@ -1,6 +1,6 @@
 module "labels" {
   source      = "cypik/labels/aws"
-  version     = "1.0.1"
+  version     = "1.0.2"
   name        = var.name
   environment = var.environment
   attributes  = var.attributes
@@ -21,6 +21,7 @@ resource "aws_iam_policy" "enable_mfa" {
     }
   )
 }
+
 #tfsec:ignore:aws-iam-no-policy-wildcards
 data "aws_iam_policy_document" "enable_mfa" {
 
