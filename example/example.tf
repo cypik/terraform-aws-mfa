@@ -1,12 +1,12 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "eu-west-2"
 }
 
 module "mfa" {
   source      = "./../"
   name        = "mfa"
   environment = "test"
-  users       = ["demo1"]
+  users       = ["demo"]
   groups      = ["demo-group"]
 }
 
