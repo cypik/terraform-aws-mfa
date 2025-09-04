@@ -74,7 +74,6 @@ data "aws_iam_policy_document" "enable_mfa" {
     resources = [
       "arn:aws:iam::*:user/&{aws:username}",
     ]
-
   }
 
   statement {
@@ -100,7 +99,6 @@ data "aws_iam_policy_document" "enable_mfa" {
       "iam:ListSSHPublicKeys",
       "iam:UpdateSSHPublicKey",
       "iam:UploadSSHPublicKey"
-
     ]
     resources = [
       "arn:aws:iam::*:user/&{aws:username}",
@@ -128,12 +126,10 @@ data "aws_iam_policy_document" "enable_mfa" {
     actions = [
       "iam:CreateVirtualMFADevice",
       "iam:DeleteVirtualMFADevice"
-
     ]
     resources = [
       "arn:aws:iam::*:user/&{aws:username}",
     ]
-
   }
 
   statement {
@@ -144,7 +140,6 @@ data "aws_iam_policy_document" "enable_mfa" {
       "iam:EnableMFADevice",
       "iam:ListMFADevices",
       "iam:ResyncMFADevice"
-
     ]
     resources = [
       "arn:aws:iam::*:user/&{aws:username}",
@@ -245,7 +240,6 @@ EOT
 }
 
 resource "null_resource" "remove_inactive_users" {
-
   for_each = var.enable_remove_inactive_users ? {
     for user in local.iam_users_list : user => user
   } : {}
