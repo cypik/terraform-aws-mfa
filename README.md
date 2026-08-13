@@ -47,25 +47,25 @@ This project is licensed under the **MIT** License - see the [LICENSE](https://g
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.13.1 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.11.0 |
-| <a name="requirement_external"></a> [external](#requirement\_external) | ~> 2.3.5 |
-| <a name="requirement_null"></a> [null](#requirement\_null) | ~> 3.2.4 |
-| <a name="requirement_tls"></a> [tls](#requirement\_tls) | >= 4.1.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.15.8 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.58.0 |
+| <a name="requirement_external"></a> [external](#requirement\_external) | ~> 2.4.0 |
+| <a name="requirement_null"></a> [null](#requirement\_null) | ~> 3.3.0 |
+| <a name="requirement_tls"></a> [tls](#requirement\_tls) | >= 4.3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.11.0 |
-| <a name="provider_external"></a> [external](#provider\_external) | ~> 2.3.5 |
-| <a name="provider_null"></a> [null](#provider\_null) | ~> 3.2.4 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.58.0 |
+| <a name="provider_external"></a> [external](#provider\_external) | ~> 2.4.0 |
+| <a name="provider_null"></a> [null](#provider\_null) | ~> 3.3.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_labels"></a> [labels](#module\_labels) | cypik/labels/aws | 1.0.2 |
+| <a name="module_labels"></a> [labels](#module\_labels) | cypik/labels/aws | 1.0.4 |
 
 ## Resources
 
