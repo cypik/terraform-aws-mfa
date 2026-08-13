@@ -40,13 +40,48 @@ variable "managedby" {
 
 variable "groups" {
   type        = list(string)
-  default     = []
+  default     = ["mfa-required"]
   description = "enable MFA for the members in these groups"
 }
 
-variable "users" {
-  type        = list(string)
-  default     = []
-  description = "enable MFA for these users"
+variable "mfa_enabled" {
+  type        = bool
+  default     = true
+  description = "Enable or disable MFA enforcement"
 }
 
+variable "region" {
+  type        = string
+  default     = ""
+  description = "AWS region"
+}
+
+variable "inactive_days" {
+  type        = number
+  default     = 90
+  description = "Number of days after which inactive users are deleted"
+}
+
+variable "key_rotation_days" {
+  type        = number
+  default     = 90
+  description = "Number of days after which access keys should be rotated"
+}
+
+variable "iam_users" {
+  type        = list(string)
+  default     = []
+  description = "List of IAM users to manage"
+}
+
+variable "enable_key_rotation" {
+  type        = bool
+  default     = false
+  description = "Enable or disable key rotation logic"
+}
+
+variable "enable_remove_inactive_users" {
+  type        = bool
+  default     = false
+  description = "Enable or disable inactive user removal logic"
+}
